@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "teams",
-    "slug": "teams",
+    "name": "teamsxteams",
+    "slug": "teamsxteams",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/Logo.png",
@@ -14,17 +14,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.teamsxteams",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.teamsxteams",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#202024"
-      }
-    },
-    "extra": {
-      "eas": {
-        "projectId": "03a6d870-714f-4781-a826-64b3a90fa26d"
       }
     }
   }
