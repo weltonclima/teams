@@ -26,9 +26,22 @@
         "backgroundColor": "#202024"
       }
     },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
+    "preview3": {
+      "developmentClient": true
+    },
     "extra": {
       "eas": {
-        "projectId": "3f0054ed-44ed-4912-83a2-fa8dc74f6c75"
+        "projectId": "09663c47-b777-4e90-9503-72433de7bceb"
       }
     }
   }

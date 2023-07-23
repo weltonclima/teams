@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useState } from 'react';
-import { FlatList, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from "react-native";
+import { FlatList, KeyboardAvoidingView } from "react-native";
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { useTheme } from 'styled-components/native';
 import LogotSvg from "../../assets/Logo.svg";
@@ -31,78 +31,76 @@ export function Team() {
 
   return (
     <KeyboardAvoidingView>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Container>
-          <Header>
-            <BackButton onPress={() => navigation.goBack()} />
-            <LogotSvg />
-          </Header>
-          <Content>
-            <Text type="title">{params.name}</Text>
-            <Text type="subtitle">adicione a galera e separe os times</Text>
-          </Content>
-          <Input
-            value={name}
-            onChangeText={setName}
-            isAddButton
-            placeholder="Nome do participante"
-            isError={isError}
-            buttonProps={{
-              onPress: () => {
-                handlecreatePlayer(name, squad, params.id);
-                setName("");
-              },
-            }}
+      <Container>
+        <Header>
+          <BackButton onPress={() => navigation.goBack()} />
+          <LogotSvg />
+        </Header>
+        <Content>
+          <Text type="title">{params.name}</Text>
+          <Text type="subtitle">adicione a galera e separe os times</Text>
+        </Content>
+        <Input
+          value={name}
+          onChangeText={setName}
+          isAddButton
+          placeholder="Nome do participante"
+          isError={isError}
+          buttonProps={{
+            onPress: () => {
+              handlecreatePlayer(name, squad, params.id);
+              setName("");
+            },
+          }}
+        />
+        <TeamGroup>
+          <TeamGroupButton>
+            <TeamButton
+              selected={squad == "one"}
+              tiltle="TIME A"
+              onPress={() => setSquad("one")}
+            />
+            <TeamButton
+              selected={squad == "two"}
+              tiltle="TIME B"
+              onPress={() => setSquad("two")}
+            />
+          </TeamGroupButton>
+          <TeamAccount>{players.filter(f => f.teamId == params.id).length}</TeamAccount>
+        </TeamGroup>
+        <PlayerGroup>
+          <FlatList
+            data={players.filter(f => f.squad == squad && f.teamId == params.id)}
+            renderItem={({ item }) => (
+              <Player>
+                <PlayerContent>
+                  <Ionicons
+                    name="person"
+                    size={24}
+                    color={theme.colors.gray[200]}
+                  />
+                  <PlayerText>{item.name}</PlayerText>
+                </PlayerContent>
+                <BorderlessButton>
+                  <Ionicons
+                    name="close"
+                    size={24}
+                    color={theme.colors.red.dark}
+                    onPress={() => handleRemovePlayer(item)}
+                  />
+                </BorderlessButton>
+              </Player>
+            )}
           />
-          <TeamGroup>
-            <TeamGroupButton>
-              <TeamButton
-                selected={squad == "one"}
-                tiltle="TIME A"
-                onPress={() => setSquad("one")}
-              />
-              <TeamButton
-                selected={squad == "two"}
-                tiltle="TIME B"
-                onPress={() => setSquad("two")}
-              />
-            </TeamGroupButton>
-            <TeamAccount>{players.filter(f => f.teamId == params.id).length}</TeamAccount>
-          </TeamGroup>
-          <PlayerGroup>
-            <FlatList
-              data={players.filter(f => f.squad == squad && f.teamId == params.id)}
-              renderItem={({ item }) => (
-                <Player>
-                  <PlayerContent>
-                    <Ionicons
-                      name="person"
-                      size={24}
-                      color={theme.colors.gray[200]}
-                    />
-                    <PlayerText>{item.name}</PlayerText>
-                  </PlayerContent>
-                  <BorderlessButton>
-                    <Ionicons
-                      name="close"
-                      size={24}
-                      color={theme.colors.red.dark}
-                      onPress={() => handleRemovePlayer(item)}
-                    />
-                  </BorderlessButton>
-                </Player>
-              )}
-            />
-          </PlayerGroup>
-          <Footer>
-            <Button
-              type="red"
-              title="Remover turma"
-              onPress={() => handleRemoveTeam(params)}
-            />
-          </Footer>
-        </Container>
-      </TouchableWithoutFeedback>
+        </PlayerGroup>
+        <Footer>
+          <Button
+            type="red"
+            title="Remover turma"
+            onPress={() => handleRemoveTeam(params)}
+          />
+        </Footer>
+      </Container>
     </KeyboardAvoidingView>
   )
 }
