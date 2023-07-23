@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 import { Alert } from 'react-native';
 import { IPlayer } from '../interfaces/IPlayer';
 import { ITeam } from '../interfaces/ITeam';
@@ -75,9 +75,6 @@ export function TeamProvider({ children }: TeamProviderProps) {
   function handleRemovePlayer(player: IPlayer) {
     setPlayers(players.filter(t => t !== player));
   }
-
-  useEffect(() => { console.log({ players }) }, [players]);
-  useEffect(() => { console.log({ teams }) }, [teams]);
 
   return (
     <TeamContext.Provider

@@ -3,8 +3,29 @@
     "name": "teams",
     "slug": "teams",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Logo.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#202024"
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#202024"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "03a6d870-714f-4781-a826-64b3a90fa26d"
+      }
+    }
   }
 }
