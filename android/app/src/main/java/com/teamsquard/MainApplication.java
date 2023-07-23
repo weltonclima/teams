@@ -1,4 +1,4 @@
-package com.teams;
+package com.teamsquard;
 
 import android.app.Application;
 import android.content.res.Configuration;
