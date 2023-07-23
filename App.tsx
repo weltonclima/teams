@@ -11,6 +11,8 @@ import {
   Roboto_700Bold,
   useFonts
 } from '@expo-google-fonts/roboto';
+import { NavigationContainer } from '@react-navigation/native';
+import { TeamProvider } from './src/hooks/useTeam';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,7 +32,11 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      <NavigationContainer>
+        <TeamProvider>
+          <Routes />
+        </TeamProvider>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }

@@ -1,3 +1,4 @@
+import { RectButton } from "react-native-gesture-handler";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
@@ -20,7 +21,7 @@ export const Main = styled.View`
    flex: 1;
 `;
 
-export const TeamContent = styled.View`
+export const TeamContent = styled(RectButton)`
   flex-direction: row;
   width: 100%;
   padding: 32px 24px;
