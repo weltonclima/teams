@@ -10,9 +10,13 @@ export function Routes() {
   return (
     <Navigator
       initialRouteName='Home'
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+        animationEnabled: false,
+      }}
     >
-      <Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
+      <Screen name="Home" component={Home} />
       <Screen name="NewTeam" component={NewTeam} />
       <Screen name="Team" component={Team} />
     </Navigator>
